@@ -1,0 +1,11 @@
+{
+  "name": "parseColor",
+  "description": "Parse color from strings",
+  "version": "0.0.1",
+  "main": "lib/parseColor.js",
+  "author": "Duncan Beevers <duncan@dweebd.com>",
+  "devDependencies": {
+    "vows": "= 0.5.8"
+  }
+}
+
