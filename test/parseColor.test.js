@@ -18,6 +18,13 @@ vows.describe('Parse color string').addBatch({
     'blue should be parsed': function(octets) { assert.strictEqual(octets.b, 34); },
     'alpha should be absent': function(octets) { assert.ok(!octets.hasOwnProperty('a')); }
   },
+  'When color string is rgba expression like rgba(100, 89, 206, 0.0)': {
+    topic: function() { return parseColor.rgba2rgbaOctets('rgba(100, 89, 206, 0.0)'); },
+    'red should be parsed': function(octets) { assert.strictEqual(octets.r, 100); },
+    'green should be parsed': function(octets) { assert.strictEqual(octets.g, 89); },
+    'blue should be parsed': function(octets) { assert.strictEqual(octets.b, 206); },
+    'alpha should be parsed': function(octets) { assert.strictEqual(octets.a, 0); }
+  },
   'When color string is alpha float like 0.0': {
     topic: function() { return parseColor.alpha2Octet('0.0'); },
     'alpha should be parsed to 0': function(octet) { assert.strictEqual(octet, 0); }
