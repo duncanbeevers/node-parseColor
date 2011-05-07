@@ -3,9 +3,19 @@
   "description": "Parse color from strings",
   "version": "0.0.1",
   "main": "lib/parseColor.js",
-  "author": "Duncan Beevers <duncan@dweebd.com>",
+  "author": "Duncan Beevers <duncan@dweebd.com> (http://www.dweebd.com)",
   "devDependencies": {
     "vows": "= 0.5.8"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/duncanbeevers/node-parseColor.git"
+  },
+  "scripts": {
+    "test": "node test/parseColor.test.js"
   }
 }
-
