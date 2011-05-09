@@ -45,15 +45,15 @@ vows.describe('Parse color string').addBatch({
     'alpha should be parsed to 255': function(octet) { assert.strictEqual(octet, 255); }
   },
   'normalize preserves extant alpha': {
-    topic: function() { return parseColor.normalize({ r: 201, g: 68, b:45, a: 0.9 }); },
+    topic: function() { return parseColor.normalize({ r: 201, g: 68, b:45, a: 192 }); },
     'red should be preserved': function(octets) { assert.strictEqual(octets.r, 201); },
     'green should be preserved': function(octets) { assert.strictEqual(octets.g, 68); },
     'blue should be preserved': function(octets) { assert.strictEqual(octets.b, 45); },
-    'alpha should be preserved': function(octets) { assert.strictEqual(octets.a, 0.9); }
+    'alpha should be preserved': function(octets) { assert.strictEqual(octets.a, 192); }
   },
-  'normalize sets missing alpha to 1': {
+  'normalize sets missing alpha to 255': {
     topic: function() { return parseColor.normalize({ r: 100, g:10, b:1 }); },
-    'alpha should be 1': function(octets) { assert.strictEqual(octets.a, 1); }
+    'alpha should be 1': function(octets) { assert.strictEqual(octets.a, 255); }
   }
 }).run();
 
