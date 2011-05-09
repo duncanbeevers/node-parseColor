@@ -54,6 +54,10 @@ vows.describe('Parse color string').addBatch({
   'normalize sets missing alpha to 255': {
     topic: function() { return parseColor.normalize({ r: 100, g:10, b:1 }); },
     'alpha should be 1': function(octets) { assert.strictEqual(octets.a, 255); }
+  },
+  'rgbaOctets2rgba encodes octets like { r: 105, g: 208, b:191, a: 255 }': {
+    topic: function() { return parseColor.rgbaOctets2rgba({ r: 105, g: 208, b:191, a: 255 }); },
+    'colors and alpha should be encoded': function(rgba) { assert.strictEqual(rgba, 'rgba(105,208,191,1)'); }
   }
 }).run();
 
