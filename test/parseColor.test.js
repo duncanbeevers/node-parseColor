@@ -58,6 +58,18 @@ vows.describe('Parse color string').addBatch({
   'rgbaOctets2rgba encodes octets like { r: 105, g: 208, b:191, a: 255 }': {
     topic: function() { return parseColor.rgbaOctets2rgba({ r: 105, g: 208, b:191, a: 255 }); },
     'colors and alpha should be encoded': function(rgba) { assert.strictEqual(rgba, 'rgba(105,208,191,1)'); }
+  },
+  'rgbOctets2hsvOctets encodes octets like { r: 80, g: 2, b: 186 }': {
+    topic: function() { return parseColor.rgbOctets2hsvOctets({ r: 80, g: 2, b: 186 }); },
+    'hue should be encoded': function(hsvOctets) { assert.strictEqual(hsvOctets.h, 4); },
+    'saturation should be encoded': function(hsvOctets) { assert.strictEqual(hsvOctets.s, 252); },
+    'value should be encoded': function(hsvOctets) { assert.strictEqual(hsvOctets.v, 186); }
+  },
+  'hsvOctets2rgbOctets encodes octets like { h: 101, s: 215, v: 44 }': {
+    topic: function() { return parseColor.hsvOctets2rgbOctets({ h: 101, s: 215, v: 44 }); },
+    'red should be encoded': function(rgbOctets) { assert.strictEqual(rgbOctets.r, 44); },
+    'green should be encoded': function(rgbOctets) { assert.strictEqual(rgbOctets.g, 23); },
+    'blue should be encoded': function(rgbOctets) { assert.strictEqual(rgbOctets.b, 6); }
   }
 }).run();
 
