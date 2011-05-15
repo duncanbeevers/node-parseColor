@@ -22,6 +22,10 @@ vows.describe('Parse color string').addBatch({
     'blue should be parsed': function(rgb) { assert.strictEqual(rgb.b, 34); },
     'alpha should be absent': function(rgb) { assert.ok(!rgb.hasOwnProperty('a')); }
   },
+  'rgb2hexStr encodes octets like { r: 82, g: 108, b: 2 }': {
+    topic: function() { return parseColor.rgb2hexStr({ r: 82, g: 108, b: 2 }); },
+    'red green and blue should be encoded': function(hexStr) { assert.strictEqual(hexStr, '#526c02'); }
+  },
   'rgbStr2rgb parses rgb expressions like rgb(84, 191, 62)': {
     topic: function() { return parseColor.rgbStr2rgb('rgb(84, 191, 62)'); },
     'red should be parsed': function(rgb) { assert.strictEqual(rgb.r, 84); },
