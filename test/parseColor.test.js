@@ -67,6 +67,10 @@ vows.describe('Parse color string').addBatch({
     topic: function() { return parseColor.rgba2rgbaStr({ r: 105, g: 208, b:191, a: 1 }); },
     'colors and alpha should be encoded': function(rgbaStr) { assert.strictEqual(rgbaStr, 'rgba(105,208,191,1)'); }
   },
+  'rgba2rgbaStr truncates floats like { r: 185.90210, g: 31.415926535, b: 27.182, a: 1.09285 }': {
+    topic: function() { return parseColor.rgba2rgbaStr({ r: 185.90210, g: 31.415926535, b: 27.182, a: 1.09285 }); },
+    'floats should be truncated': function(rgbaStr) { assert.strictEqual(rgbaStr, 'rgba(185,31,27,1.092)'); }
+  },
   'rgb2rgbaStr encodes octets like { r: 82, g: 189, b: 62 } when provided alpha': {
     topic: function() { return parseColor.rgb2rgbaStr({ r: 82, g: 189, b:62 }, 1); },
     'colors and provided alpha should be encoded': function(rgbaStr) { assert.strictEqual(rgbaStr, 'rgba(82,189,62,1)'); }
