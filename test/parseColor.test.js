@@ -74,6 +74,24 @@ vows.describe('Parse color string').addBatch({
     'red should be encoded': function(rgb) { assert.inDelta(rgb.r, 84.15, 0.01); },
     'green should be encoded': function(rgb) { assert.inDelta(rgb.g, 46.98, 0.01); },
     'blue should be encoded': function(rgb) { assert.inDelta(rgb.b, 16.83, 0.01); }
+  },
+  'hsv2rgb encodes octets like { h: Math.PI, s: 1, v: 1 }': {
+    topic: function() { return parseColor.hsv2rgb({ h: Math.PI, s: 1, v: 1 }); },
+    'red should be encoded': function(rgb) { assert.strictEqual(rgb.r, 0); },
+    'green should be encoded': function(rgb) { assert.strictEqual(rgb.g, 255); },
+    'blue should be encoded': function(rgb) { assert.strictEqual(rgb.b, 255); }
+  },
+  'hsv2rgb encodes octets like { h: Math.PI * 2, s: 1, v: 1 }': {
+    topic: function() { return parseColor.hsv2rgb({ h: Math.PI * 2, s: 1, v: 1 }); },
+    'red should be encoded': function(rgb) { assert.strictEqual(rgb.r, 255); },
+    'green should be encoded': function(rgb) { assert.strictEqual(rgb.g, 0); },
+    'blue should be encoded': function(rgb) { assert.strictEqual(rgb.b, 0); }
+  },
+  'hsv2rgb encodes octets like { h: Math.PI / 3, s: 1, v: 1 }': {
+    topic: function() { return parseColor.hsv2rgb({ h: Math.PI / 3, s: 1, v: 1 }); },
+    'red should be encoded': function(rgb) { assert.strictEqual(rgb.r, 255); },
+    'green should be encoded': function(rgb) { assert.inDelta(rgb.g, 255, 0.001); },
+    'blue should be encoded': function(rgb) { assert.strictEqual(rgb.b, 0); }
   }
 }).run();
 
