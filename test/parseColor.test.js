@@ -63,6 +63,10 @@ vows.describe('Parse color string').addBatch({
     topic: function() { return parseColor.rgba2rgbaStr({ r: 105, g: 208, b:191, a: 1 }); },
     'colors and alpha should be encoded': function(rgbaStr) { assert.strictEqual(rgbaStr, 'rgba(105,208,191,1)'); }
   },
+  'rgb2rgbaStr encodes octets like { r: 82, g: 189, b: 62 } when provided alpha': {
+    topic: function() { return parseColor.rgb2rgbaStr({ r: 82, g: 189, b:62 }, 1); },
+    'colors and provided alpha should be encoded': function(rgbaStr) { assert.strictEqual(rgbaStr, 'rgba(82,189,62,1)'); }
+  },
   'rgb2hsv encodes octets like { r: 80, g: 2, b: 186 }': {
     topic: function() { return parseColor.rgb2hsv({ r: 80, g: 2, b: 186 }); },
     'hue should be encoded': function(hsv) { assert.inDelta(hsv.h, 4.63, 0.01); },
